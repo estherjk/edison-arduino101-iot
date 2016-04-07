@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="edison-arduino101-iot">
+<head>
+  <meta name="viewport" content="initial-scale=1"/>
+  <title>edison-arduino101-iot</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          edison-arduino101-iot
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- end navbar -->
+
+  <!-- main -->
+  <div class="container">
+
+    <span id="ax-label">ax: </span>
+    <span id="ax-value">0.0</span>
+
+  </div>
+  <!-- end main -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
