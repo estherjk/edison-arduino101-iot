@@ -35,17 +35,47 @@ noble.on('discover', function(peripheral) {
       var imuService = services[0];
       console.log('Discovered IMU service');
 
-      // TODO: Read data from all characteristics
-      imuService.discoverCharacteristics([AX_CHAR_UUID], function(error, characteristics) {
-        var axChar = characteristics[0];
-
-        axChar.on('read', function(data) {
-          console.log(data.readInt32LE(0));
-          socket.emit('ax:edison', data.readInt32LE(0));
+      imuService.discoverCharacteristics([], function(error, characteristics) {
+        characteristics.forEach(function(characteristic) {
+          emitSensorData(characteristic);
         });
-
-        axChar.notify('true', function(error) { if (error) throw error; });
       });
     });
   });
 });
+
+function getSocketLabel(uuid) {
+  var label = null;
+
+  if(uuid == AX_CHAR_UUID) {
+    label = 'ax:edison';
+  }
+  else if(uuid == AY_CHAR_UUID) {
+    label = 'ay:edison';
+  }
+  else if(uuid == AZ_CHAR_UUID) {
+    label = 'az:edison';
+  }
+  else if(uuid == GX_CHAR_UUID) {
+    label = 'gx:edison';
+  }
+  else if(uuid == GY_CHAR_UUID) {
+    label = 'gy:edison';
+  }
+  else if(uuid == GZ_CHAR_UUID) {
+    label = 'gz:edison';
+  }
+
+  return label;
+}
+
+function emitSensorData(characteristic) {
+  var socketLabel = getSocketLabel(characteristic.uuid);
+  console.log(socketLabel);
+
+  characteristic.on('read', function(data) {
+    socket.emit(socketLabel, data.readInt32LE(0));
+  });
+
+  characteristic.notify('true', function(error) { if (error) throw error; });
+}
