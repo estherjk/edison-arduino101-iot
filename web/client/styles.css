@@ -1,3 +1,9 @@
 body {
   padding-top: 70px;
 }
+
+.sensor-value {
+  font-size: 21px;
+  font-weight: 300;
+  line-height: 1.4;
+}

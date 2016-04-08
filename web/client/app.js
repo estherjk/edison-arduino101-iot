@@ -6,6 +6,25 @@ socket.on('connect', function() {
 });
 
 socket.on('ax:web', function(data) {
-  var ax = document.getElementById('ax-value');
-  ax.innerText = data;
+  document.getElementById('ax-value').innerText = data;
+});
+
+socket.on('ay:web', function(data) {
+  document.getElementById('ay-value').innerText = data;
+});
+
+socket.on('az:web', function(data) {
+  document.getElementById('az-value').innerText = data;
+});
+
+socket.on('gx:web', function(data) {
+  document.getElementById('gx-value').innerText = data;
+});
+
+socket.on('gy:web', function(data) {
+  document.getElementById('gy-value').innerText = data;
+});
+
+socket.on('gz:web', function(data) {
+  document.getElementById('gz-value').innerText = data;
 });
