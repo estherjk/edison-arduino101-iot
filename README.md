@@ -8,6 +8,8 @@ Here's a picture that describes the overall architecture:
 
 ![Archiecture](https://raw.githubusercontent.com/drejkim/edison-arduino101-iot/master/images/edison-arduino101-iot.png)
 
+Arduino 101 uses the [CurieBLE library](https://www.arduino.cc/en/Reference/CurieBLE) to broadcast the IMU data via BLE. Edison is responsible for receiving this data using [noble](https://github.com/sandeepmistry/noble), a Node.js BLE central module, and sending it to a separate web server using [socket.io-client](https://github.com/socketio/socket.io-client). The web server&mdash;which also uses Node.js and [socket.io](http://socket.io/)&mdash;is responsible for receiving data from Edison and hosting a web page that displays the IMU data. For more details, see this [blog post](http://drejkim.com/blog/2016/04/08/using-edison-and-arduino-101-together).
+
 ## Setting up the demo
 
 ### Edison
