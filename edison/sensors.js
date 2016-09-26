@@ -1,7 +1,7 @@
 var noble = require('noble');
 
 // MODIFY THIS WITH THE APPROPRIATE URL
-var socket = require('socket.io-client')('http://drejkim-mbpr.local:8080');
+var socket = require('socket.io-client')('WEB-SERVER-DOMAIN-HERE:8080');
 
 var IMU_SERVICE_UUID = '2947ac9efc3811e586aa5e5517507c66';
 var AX_CHAR_UUID =  '2947af14fc3811e586aa5e5517507c66';
