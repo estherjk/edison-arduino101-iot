@@ -76,3 +76,32 @@ If the output only goes up to "Connected to peripheral...", try restarting the p
 * Open a browser window and navigate to the web server's URL
 
 You should now see the accelerometer / gyroscope data from your Arduino 101 streaming to the web page!
+
+### Troubleshooting
+
+If you're not seeing the data change on the webpage, first check that the web server console looks something like this:
+
+```bash
+HTTP server listening on port 8080
+Client connected
+```
+
+Also, check that the Edison console (where `sensors.js` is running) outputs a new line, **Connected to server**, and looks similar to this:
+
+```bash
+root@myedison:~# node sensors.js
+Start BLE scan...
+Connected to peripheral: 984fee0f3980
+Discovered IMU service
+ax:edison
+ay:edison
+az:edison
+gx:edison
+gy:edison
+gz:edison
+Connected to server
+```
+
+On the Arduino 101, go to **Tools -> Serial Monitor**. The data should be outputting to the serial monitor and look something like this:
+
+![Arduino 101 Serial Monitor](https://raw.githubusercontent.com/drejkim/edison-arduino101-iot/master/images/arduino101-serial-monitor.png)
