@@ -10,8 +10,13 @@
 #define GY_CHAR_UUID "2947b5ae-fc38-11e5-86aa-5e5517507c66"
 #define GZ_CHAR_UUID "2947b694-fc38-11e5-86aa-5e5517507c66"
 
+// Arduino 101 acts as a BLE peripheral
 BLEPeripheral blePeripheral;
+
+// IMU data is registered as a BLE service
 BLEService imuService(IMU_SERVICE_UUID);
+
+// Each IMU data point is its own characteristic
 BLEIntCharacteristic axChar(AX_CHAR_UUID, BLERead | BLENotify);
 BLEIntCharacteristic ayChar(AY_CHAR_UUID, BLERead | BLENotify);
 BLEIntCharacteristic azChar(AZ_CHAR_UUID, BLERead | BLENotify);
@@ -67,6 +72,7 @@ void setup() {
 }
 
 void loop() {
+  // Check if the connection to the central is active or not
   BLECentral central = blePeripheral.central();
 
   if(central) {

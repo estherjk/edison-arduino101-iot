@@ -3,6 +3,7 @@ var noble = require('noble');
 // MODIFY THIS WITH THE APPROPRIATE URL
 var socket = require('socket.io-client')('WEB-SERVER-DOMAIN-HERE:8080');
 
+// These should correspond to the peripheral's service and characteristic UUIDs
 var IMU_SERVICE_UUID = '2947ac9efc3811e586aa5e5517507c66';
 var AX_CHAR_UUID =  '2947af14fc3811e586aa5e5517507c66';
 var AY_CHAR_UUID = '2947b090fc3811e586aa5e5517507c66';
@@ -28,6 +29,8 @@ noble.on('stateChange', function(state) {
   }
 });
 
+// Discover the peripheral's IMU service and corresponding characteristics
+// Then, emit each data point on the socket stream
 noble.on('discover', function(peripheral) {
   peripheral.connect(function(error) {
     console.log('Connected to peripheral: ' + peripheral.uuid);
